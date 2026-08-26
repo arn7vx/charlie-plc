@@ -226,7 +226,7 @@
       <h3 class="section-title">${esc(d.testimonialsTitle)}</h3>
       <div class="testimonial-stack">${d.testimonials.map(t=>{
         const sentiment = /SELL|UNDERPERFORM|AVOID/i.test(t.rating) ? 'negative' : 'positive';
-        const reviewer = t.reviewerKey && CONFIG.testimonialReviewers ? CONFIG.testimonialReviewers[t.reviewerKey] : null;
+        const reviewer = t.reviewerKey && CFG.testimonialReviewers ? CFG.testimonialReviewers[t.reviewerKey] : null;
         const portrait = reviewer?.image
           ? `<img class="testimonial-avatar" src="${esc(reviewer.image)}" alt="" loading="lazy">`
           : `<div class="testimonial-avatar testimonial-avatar--anonymous" aria-hidden="true">?</div>`;
