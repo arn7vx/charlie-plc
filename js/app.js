@@ -139,13 +139,15 @@
     const cards = section.cards;
     if (index >= cards.length) return nextStage();
     const item = cards[index];
+    const imageShape = ['portrait', 'square', 'landscape'].includes(item.imageShape) ? item.imageShape : 'landscape';
+    const imagePosition = item.imagePosition || '50% 50%';
     const options = item.options.map((o, i) => `
       <button class="answer-btn" data-index="${i}"><span class="letter">${String.fromCharCode(65+i)}</span><span>${esc(o)}</span></button>`).join('');
 
     app.innerHTML = stageShell(`
       <div class="question-header"><span class="question-count">${esc(section.eyebrow)} · ${index + 1}/${cards.length}</span><span class="dots">${cards.map((_,i)=>`<i class="${i===index?'active':''}"></i>`).join('')}</span></div>
       ${index === 0 ? `<h2 class="section-title">${esc(section.title)}</h2><p class="micro" style="margin:0 0 18px">${esc(section.intro)}</p>` : ''}
-      <img class="quiz-photo" src="${esc(item.image)}" alt="${esc(item.imageAlt)}">
+      <img class="quiz-photo quiz-photo--${imageShape}" src="${esc(item.image)}" alt="${esc(item.imageAlt)}" style="object-position:${esc(imagePosition)}">
       <h3 class="question" style="font-size:clamp(24px,7vw,34px)">${esc(item.question)}</h3>
       <div class="answers" id="answers">${options}</div>
       <div id="revealSlot"></div>
@@ -185,9 +187,11 @@
 
   function renderOverview() {
     const d = C.overview;
+    const imageShape = ['portrait', 'square', 'landscape'].includes(d.imageShape) ? d.imageShape : 'portrait';
+    const imagePosition = d.imagePosition || '50% 50%';
     app.innerHTML = stageShell(`
       <div class="card hero-card">
-        <img class="hero-image" src="${esc(d.image)}" alt="${esc(d.imageAlt)}">
+        <img class="hero-image hero-image--${imageShape}" src="${esc(d.image)}" alt="${esc(d.imageAlt)}" style="object-position:${esc(imagePosition)}">
         <div class="photo-caption"><span>${esc(d.ticker)}</span><span>Prospectus portrait</span></div>
       </div>
       <div class="status-pill"><i></i>${esc(d.status)}</div>

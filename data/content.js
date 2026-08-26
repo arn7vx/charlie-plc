@@ -77,7 +77,9 @@ window.SITE_CONTENT = {
     intro: "Tap an answer. The market will reveal what it knows.",
     cards: [
       {
-        image: "./assets/images/charlie_suit.jpg",
+        image: "./assets/images/charlie-suit.jpg",
+        imageShape: "square",
+        imagePosition: "50% 42%",
         imageAlt: "Placeholder for a serious-looking photo of Charlie",
         question: "Based purely on this photograph, what does Charlie study?",
         options: ["Finance", "Commerce", "Law", "Psychology"],
@@ -86,7 +88,9 @@ window.SITE_CONTENT = {
         reveal: "Market analysts have historically overestimated Charlie’s exposure to commerce. He is currently completing his Master’s and is consequently dangerously qualified to ask: “Do you want advice, or do you just want me to listen?”"
       },
       {
-        image: "./assets/images/charlie_bike.JPG",
+        image: "./assets/images/charlie-bike.jpg",
+        imageShape: "portrait",
+        imagePosition: "50% 46%",
         imageAlt: "Placeholder for a confident social photo of Charlie",
         question: "Which piece of infrastructure is currently missing from Charlie’s portfolio?",
         options: ["Emotional intelligence", "Ability to coach tennis", "A driver’s licence", "Karaoke confidence"],
@@ -96,6 +100,8 @@ window.SITE_CONTENT = {
       },
       {
         image: "./assets/images/charlie-blush.svg",
+        imageShape: "portrait",
+        imagePosition: "50% 45%",
         imageAlt: "Placeholder for an embarrassed photo of Charlie",
         question: "Charlie receives a genuine compliment. What happens?",
         options: ["Says thank you normally", "Smoothly returns it", "Pretends not to hear", "Turns red and loses operational capacity"],
@@ -105,7 +111,9 @@ window.SITE_CONTENT = {
         redness: true
       },
       {
-        image: "./assets/images/cocktailcharlie.jpeg",
+        image: "./assets/images/charlie-cocktail.jpg",
+        imageShape: "portrait",
+        imagePosition: "50% 44%",
         imageAlt: "Placeholder for a night-out photo of Charlie",
         question: "Which stimulant poses the greatest risk to CHRL’s sleep cycle?",
         options: ["Double espresso", "Pre-workout", "Energy drink", "One Coke Zero at an irresponsible hour"],
@@ -117,7 +125,9 @@ window.SITE_CONTENT = {
   },
 
   overview: {
-    image: "./assets/images/67_charlie.JPG",
+    image: "./assets/images/charlie-hero.jpg",
+    imageShape: "portrait",
+    imagePosition: "50% 38%",
     imageAlt: "Placeholder for Charlie hero photo",
     ticker: "CHRL",
     name: "Charlie",
@@ -139,7 +149,9 @@ window.SITE_CONTENT = {
     intro: "Historical data is limited. We constructed two hypothetical scenarios.",
     cards: [
       {
-        image: "./assets/images/beach_charlie.JPEG",
+        image: "./assets/images/charlie-beach.jpg",
+        imageShape: "portrait",
+        imagePosition: "50% 50%",
         imageAlt: "Placeholder for Charlie at the beach house",
         question: "You both unexpectedly have a completely free weekend. Charlie’s preferred deployment?",
         options: [
@@ -153,7 +165,9 @@ window.SITE_CONTENT = {
         reveal: "Charlie is happiest with a good social life, things to do, and somewhere comfortable to properly switch off. Ideally you are there too."
       },
       {
-        image: "./assets/images/chalie_arlo.jpeg",
+        image: "./assets/images/charlie-dog.jpg",
+        imageShape: "landscape",
+        imagePosition: "50% 44%",
         imageAlt: "Placeholder for a softer candid photo of Charlie",
         question: "You’ve had an absolutely terrible week. Charlie’s response?",
         options: [

@@ -184,10 +184,13 @@ img { display: block; width: 100%; }
 
 .hero-card { margin: 12px 0 24px; }
 .hero-image {
-  aspect-ratio: 4 / 5;
+  width: 100%;
   object-fit: cover;
   background: var(--paper-deep);
 }
+.hero-image--portrait { aspect-ratio: 3 / 4; }
+.hero-image--square { aspect-ratio: 1 / 1; }
+.hero-image--landscape { aspect-ratio: 4 / 3; }
 .photo-caption {
   display: flex;
   justify-content: space-between;
@@ -355,13 +358,16 @@ img { display: block; width: 100%; }
 
 .quiz-photo {
   width: 100%;
-  aspect-ratio: 16/11;
   object-fit: cover;
   border-radius: 22px;
   margin-bottom: 20px;
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+  background: var(--paper-deep);
 }
+.quiz-photo--portrait { aspect-ratio: 3 / 4; }
+.quiz-photo--square { aspect-ratio: 1 / 1; }
+.quiz-photo--landscape { aspect-ratio: 4 / 3; }
 .reveal {
   margin-top: 16px;
   padding: 18px;
