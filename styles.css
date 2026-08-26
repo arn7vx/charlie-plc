@@ -455,9 +455,15 @@ img { display: block; width: 100%; }
 .testimonial--negative { border-color: rgba(165,83,77,.30); background: rgba(165,83,77,.07); }
 .testimonial--negative::before { background:var(--negative); }
 .testimonial--negative .rating { color:var(--negative); }
-.rating { display:inline-block; font-size:9px; font-weight:800; letter-spacing:.14em; color:var(--wine); border-bottom:1px solid currentColor; padding-bottom:2px; margin-bottom:10px; }
+.testimonial-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:15px; }
+.testimonial-person { display:flex; align-items:center; gap:10px; min-width:0; }
+.testimonial-avatar { width:46px; height:46px; flex:0 0 46px; border-radius:50%; object-fit:cover; border:1px solid rgba(67,54,46,.13); background:var(--paper); box-shadow:0 5px 14px rgba(79,56,43,.08); }
+.testimonial-avatar--anonymous { display:grid; place-items:center; font-family:Georgia,serif; font-size:19px; font-style:italic; color:var(--muted); background:rgba(255,255,255,.36); }
+.testimonial-author { display:block; font-size:11px; line-height:1.15; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.testimonial-role { display:block; margin-top:3px; color:var(--muted); font-size:8px; text-transform:uppercase; letter-spacing:.11em; }
+.rating { display:inline-block; flex:0 0 auto; font-size:9px; font-weight:800; letter-spacing:.14em; color:var(--wine); border:1px solid currentColor; border-radius:999px; padding:6px 8px 5px; }
 .testimonial blockquote { margin:0 0 14px; font-family:Georgia,serif; font-size:19px; line-height:1.28; }
-.testimonial footer { display:flex; justify-content:space-between; gap:12px; color:var(--muted); font-size:9px; line-height:1.35; }
+.testimonial footer { display:block; color:var(--muted); font-size:9px; line-height:1.35; padding-top:11px; border-top:1px solid rgba(67,54,46,.08); }
 
 .cta-cluster { display:grid; gap:10px; margin:24px 0; }
 .faq { border-top:1px solid var(--line); margin-top:28px; }

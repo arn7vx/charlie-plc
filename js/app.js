@@ -226,11 +226,24 @@
       <h3 class="section-title">${esc(d.testimonialsTitle)}</h3>
       <div class="testimonial-stack">${d.testimonials.map(t=>{
         const sentiment = /SELL|UNDERPERFORM|AVOID/i.test(t.rating) ? 'negative' : 'positive';
+        const reviewer = t.reviewerKey && CONFIG.testimonialReviewers ? CONFIG.testimonialReviewers[t.reviewerKey] : null;
+        const portrait = reviewer?.image
+          ? `<img class="testimonial-avatar" src="${esc(reviewer.image)}" alt="" loading="lazy">`
+          : `<div class="testimonial-avatar testimonial-avatar--anonymous" aria-hidden="true">?</div>`;
         return `
         <article class="testimonial testimonial--${sentiment}">
-          <span class="rating">${esc(t.rating)}</span>
+          <div class="testimonial-head">
+            <div class="testimonial-person">
+              ${portrait}
+              <div>
+                <strong class="testimonial-author">${esc(t.author)}</strong>
+                <span class="testimonial-role">Verified analyst</span>
+              </div>
+            </div>
+            <span class="rating">${esc(t.rating)}</span>
+          </div>
           <blockquote>“${esc(t.quote)}”</blockquote>
-          <footer><strong>— ${esc(t.author)}</strong>${t.note ? `<span>${esc(t.note)}</span>` : ''}</footer>
+          ${t.note ? `<footer><span>${esc(t.note)}</span></footer>` : ''}
         </article>`;
       }).join('')}</div>
       <button class="primary-btn" id="positionNext" style="margin-top:22px">Review long-term outlook</button>
