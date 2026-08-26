@@ -8,9 +8,9 @@ window.SITE_CONFIG = {
   shareText: "I may have found a role you are unusually qualified for.",
   siteUrl: "", // Optional. Leave blank to share the current page URL.
   hiringTeam: [
-    { name: "Lachie", image: "./assets/images/hiring-1.svg" },
-    { name: "Em", image: "./assets/images/hiring-2.svg" },
-    { name: "Knight", image: "./assets/images/hiring-3.svg" },
+    { name: "Lachlan", image: "./assets/images/hiring-1.svg" },
+    { name: "Emily", image: "./assets/images/hiring-2.svg" },
+    { name: "Ruth", image: "./assets/images/hiring-3.svg" },
     { name: "Arnav", image: "./assets/images/hiring-4.svg" }
   ],
 

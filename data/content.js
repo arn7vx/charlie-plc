@@ -22,7 +22,7 @@ window.SITE_CONTENT = {
 
   screening: {
     title: "Cultural fit assessment",
-    intro: "Four questions. No wrong answers. Some answers may be quietly appreciated.",
+    intro: "Four questions. Some answers may be quietly appreciated.",
     questions: [
       {
         question: "A free Saturday has unexpectedly appeared. What are we doing?",
@@ -223,7 +223,7 @@ window.SITE_CONTENT = {
       {
         rating: "BUY",
         quote: "[Replace with a real female-friend testimonial: warm, easy to talk to, emotionally safe, genuinely recommendable.]",
-        author: "Female friend",
+        author: "Friend",
         reviewerKey: "femaleFriend",
         note: "Considerable credibility attached to this assessment."
       },
