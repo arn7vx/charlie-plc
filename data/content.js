@@ -222,7 +222,7 @@ window.SITE_CONTENT = {
     testimonials: [
       {
         rating: "BUY",
-        quote: "[Replace with her actual testimonial.]",
+        quote: "[Replace with a real female-friend testimonial: warm, easy to talk to, emotionally safe, genuinely recommendable.]",
         author: "[Friend name]",
         relationship: "Female friend",
         reviewerKey: "femaleFriend",
@@ -230,7 +230,7 @@ window.SITE_CONTENT = {
       },
       {
         rating: "OUTPERFORM",
-        quote: "[Replace with his best friend’s actual testimonial.]",
+        quote: "[Replace with a real best-friend testimonial: funny, mildly humiliating, ultimately flattering.]",
         author: "[Best friend name]",
         relationship: "Best friend",
         reviewerKey: "bestFriend"

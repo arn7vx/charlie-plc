@@ -96,9 +96,13 @@
       <div class="answers">${options}</div>
     `);
 
+    let answered = false;
     app.querySelectorAll('.answer-btn').forEach(btn => btn.addEventListener('click', () => {
+      if (answered) return;
+      answered = true;
       screeningAnswers[screeningIndex] = Number(btn.dataset.index);
       btn.classList.add('selected');
+      app.querySelectorAll('.answer-btn').forEach(b => { b.disabled = true; });
       window.setTimeout(() => transitionOut(() => {
         screeningIndex += 1;
         renderScreening();
@@ -165,6 +169,10 @@
         </div>
         <button class="primary-btn" id="cardNext" style="margin-top:14px">${index === cards.length - 1 ? 'Continue' : 'Next'}</button>`;
       document.getElementById('cardNext').addEventListener('click', () => {
+        if (index === cards.length - 1) {
+          nextStage();
+          return;
+        }
         transitionOut(() => {
           if (kind === 'quiz') quizIndex += 1; else scenarioIndex += 1;
           renderInteractiveCards(section, kind);
@@ -228,7 +236,7 @@
         const sentiment = /SELL|UNDERPERFORM|AVOID/i.test(t.rating) ? 'negative' : 'positive';
         const reviewer = t.reviewerKey && CFG.testimonialReviewers ? CFG.testimonialReviewers[t.reviewerKey] : null;
         const portrait = reviewer?.image
-          ? `<img class="testimonial-avatar" src="${esc(reviewer.image)}" alt="" loading="lazy">`
+          ? `<img class="testimonial-avatar testimonial-avatar--photo" src="${esc(reviewer.image)}" alt="Portrait of ${esc(t.author)}" loading="lazy" data-avatar-fallback>`
           : `<div class="testimonial-avatar testimonial-avatar--anonymous" aria-hidden="true">?</div>`;
         return `
         <article class="testimonial testimonial--${sentiment}">
@@ -237,7 +245,7 @@
               ${portrait}
               <div>
                 <strong class="testimonial-author">${esc(t.author)}</strong>
-                <span class="testimonial-role">Verified analyst</span>
+                <span class="testimonial-role">${esc(t.relationship || 'Independent reviewer')}</span>
               </div>
             </div>
             <span class="rating">${esc(t.rating)}</span>
@@ -248,6 +256,15 @@
       }).join('')}</div>
       <button class="primary-btn" id="positionNext" style="margin-top:22px">Review long-term outlook</button>
     `, true);
+    app.querySelectorAll('img[data-avatar-fallback]').forEach(img => {
+      img.addEventListener('error', () => {
+        const fallback = document.createElement('div');
+        fallback.className = 'testimonial-avatar testimonial-avatar--anonymous';
+        fallback.setAttribute('aria-hidden', 'true');
+        fallback.textContent = '?';
+        img.replaceWith(fallback);
+      }, { once: true });
+    });
     document.getElementById('positionNext').addEventListener('click', nextStage);
   }
 
@@ -263,6 +280,10 @@
         <div class="cta-cluster">
           <a class="primary-btn" style="display:grid;place-items:center;text-decoration:none" href="${esc(CFG.instagramUrl)}" target="_blank" rel="noopener">${esc(d.instagramLabel)}</a>
           <p class="micro button-note" style="margin-top:-4px">${esc(d.instagramNote)}</p>
+          <div class="referral-copy">
+            <strong>${esc(d.referralTitle)}</strong>
+            <span>${esc(d.referralBody)}</span>
+          </div>
           <button class="secondary-btn" id="shareBtn">${esc(d.referralLabel)}</button>
           <p class="micro button-note" style="margin-top:-4px">${esc(d.referralNote)}</p>
         </div>
