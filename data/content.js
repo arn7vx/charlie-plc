@@ -222,21 +222,24 @@ window.SITE_CONTENT = {
     testimonials: [
       {
         rating: "BUY",
-        quote: "[Replace with a real female-friend testimonial: warm, easy to talk to, emotionally safe, genuinely recommendable.]",
-        author: "Friend",
+        quote: "[Replace with her actual testimonial.]",
+        author: "[Friend name]",
+        relationship: "Female friend",
         reviewerKey: "femaleFriend",
         note: "Considerable credibility attached to this assessment."
       },
       {
         rating: "OUTPERFORM",
-        quote: "[Replace with a real best-friend testimonial: funny, mildly humiliating, ultimately flattering.]",
-        author: "Best friend",
+        quote: "[Replace with his best friend’s actual testimonial.]",
+        author: "[Best friend name]",
+        relationship: "Best friend",
         reviewerKey: "bestFriend"
       },
       {
         rating: "STRONG BUY",
         quote: "Please take him.",
         author: "Charlie’s mum",
+        relationship: "Family analyst",
         reviewerKey: "mum",
         note: "Material conflict of interest disclosed."
       },
@@ -244,6 +247,7 @@ window.SITE_CONTENT = {
         rating: "SELL",
         quote: "Likes early mornings.",
         author: "Anonymous reviewer",
+        relationship: "Lifestyle desk",
         note: "Management considers this criticism fundamentally unfair."
       }
     ]
