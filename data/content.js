@@ -86,7 +86,7 @@ window.SITE_CONTENT = {
         reveal: "Market analysts have historically overestimated Charlie’s exposure to commerce. He is currently completing his Master’s and is consequently dangerously qualified to ask: “Do you want advice, or do you just want me to listen?”"
       },
       {
-        image: "./assets/images/charlie-bike.JPG",
+        image: "./assets/images/charlie_bike.JPG",
         imageAlt: "Placeholder for a confident social photo of Charlie",
         question: "Which piece of infrastructure is currently missing from Charlie’s portfolio?",
         options: ["Emotional intelligence", "Ability to coach tennis", "A driver’s licence", "Karaoke confidence"],
@@ -105,7 +105,7 @@ window.SITE_CONTENT = {
         redness: true
       },
       {
-        image: "./assets/images/charlie-coke.svg",
+        image: "./assets/images/cocktailcharlie.jpeg",
         imageAlt: "Placeholder for a night-out photo of Charlie",
         question: "Which stimulant poses the greatest risk to CHRL’s sleep cycle?",
         options: ["Double espresso", "Pre-workout", "Energy drink", "One Coke Zero at an irresponsible hour"],
@@ -117,7 +117,7 @@ window.SITE_CONTENT = {
   },
 
   overview: {
-    image: "./assets/images/charlie-hero.svg",
+    image: "./assets/images/67_charlie.JPG",
     imageAlt: "Placeholder for Charlie hero photo",
     ticker: "CHRL",
     name: "Charlie",
@@ -139,7 +139,7 @@ window.SITE_CONTENT = {
     intro: "Historical data is limited. We constructed two hypothetical scenarios.",
     cards: [
       {
-        image: "./assets/images/charlie-beach.svg",
+        image: "./assets/images/beach_charlie.JPEG",
         imageAlt: "Placeholder for Charlie at the beach house",
         question: "You both unexpectedly have a completely free weekend. Charlie’s preferred deployment?",
         options: [
@@ -153,7 +153,7 @@ window.SITE_CONTENT = {
         reveal: "Charlie is happiest with a good social life, things to do, and somewhere comfortable to properly switch off. Ideally you are there too."
       },
       {
-        image: "./assets/images/charlie-soft.svg",
+        image: "./assets/images/chalie_arlo.jpeg",
         imageAlt: "Placeholder for a softer candid photo of Charlie",
         question: "You’ve had an absolutely terrible week. Charlie’s response?",
         options: [
