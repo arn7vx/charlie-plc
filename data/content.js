@@ -77,7 +77,7 @@ window.SITE_CONTENT = {
     intro: "Tap an answer. The market will reveal what it knows.",
     cards: [
       {
-        image: "./assets/images/charlie-finance.svg",
+        image: "./assets/images/charlie_suit.jpg",
         imageAlt: "Placeholder for a serious-looking photo of Charlie",
         question: "Based purely on this photograph, what does Charlie study?",
         options: ["Finance", "Commerce", "Law", "Psychology"],
@@ -86,7 +86,7 @@ window.SITE_CONTENT = {
         reveal: "Market analysts have historically overestimated Charlie’s exposure to commerce. He is currently completing his Master’s and is consequently dangerously qualified to ask: “Do you want advice, or do you just want me to listen?”"
       },
       {
-        image: "./assets/images/charlie-social.svg",
+        image: "./assets/images/charlie-bike.JPG",
         imageAlt: "Placeholder for a confident social photo of Charlie",
         question: "Which piece of infrastructure is currently missing from Charlie’s portfolio?",
         options: ["Emotional intelligence", "Ability to coach tennis", "A driver’s licence", "Karaoke confidence"],
