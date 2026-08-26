@@ -147,11 +147,25 @@
     app.innerHTML = stageShell(`
       <div class="question-header"><span class="question-count">${esc(section.eyebrow)} · ${index + 1}/${cards.length}</span><span class="dots">${cards.map((_,i)=>`<i class="${i===index?'active':''}"></i>`).join('')}</span></div>
       ${index === 0 ? `<h2 class="section-title">${esc(section.title)}</h2><p class="micro" style="margin:0 0 18px">${esc(section.intro)}</p>` : ''}
-      <img class="quiz-photo quiz-photo--${imageShape}" src="${esc(item.image)}" alt="${esc(item.imageAlt)}" style="object-position:${esc(imagePosition)}">
+      ${item.image
+        ? `<img class="quiz-photo quiz-photo--${imageShape}" src="${esc(item.image)}" alt="${esc(item.imageAlt)}" style="object-position:${esc(imagePosition)}" data-photo>`
+        : `<div class="quiz-photo quiz-photo--${imageShape} photo-placeholder" role="img" aria-label="${esc(item.imageAlt)}"><span>${esc(item.placeholderLabel || 'Photo coming soon')}</span></div>`}
       <h3 class="question" style="font-size:clamp(24px,7vw,34px)">${esc(item.question)}</h3>
       <div class="answers" id="answers">${options}</div>
       <div id="revealSlot"></div>
     `, true);
+
+    const activePhoto = app.querySelector('img[data-photo]');
+    if (activePhoto) {
+      activePhoto.addEventListener('error', () => {
+        const fallback = document.createElement('div');
+        fallback.className = activePhoto.className + ' photo-placeholder';
+        fallback.setAttribute('role', 'img');
+        fallback.setAttribute('aria-label', activePhoto.alt || 'Photo unavailable');
+        fallback.innerHTML = '<span>Photo unavailable</span>';
+        activePhoto.replaceWith(fallback);
+      }, { once: true });
+    }
 
     let answered = false;
     app.querySelectorAll('.answer-btn').forEach(btn => btn.addEventListener('click', () => {
@@ -203,6 +217,17 @@
       ${factsGrid(d.facts)}
       <button class="primary-btn" id="overviewNext">Run scenario modelling</button>
     `, true);
+    const heroPhoto = app.querySelector('.hero-image');
+    if (heroPhoto) {
+      heroPhoto.addEventListener('error', () => {
+        const fallback = document.createElement('div');
+        fallback.className = 'hero-image hero-image--' + imageShape + ' photo-placeholder';
+        fallback.setAttribute('role', 'img');
+        fallback.setAttribute('aria-label', heroPhoto.alt || 'Photo unavailable');
+        fallback.innerHTML = '<span>Photo unavailable</span>';
+        heroPhoto.replaceWith(fallback);
+      }, { once: true });
+    }
     document.getElementById('overviewNext').addEventListener('click', nextStage);
   }
 

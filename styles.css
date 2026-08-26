@@ -182,15 +182,27 @@ img { display: block; width: 100%; }
   border: 1px solid var(--line);
 }
 
-.hero-card { margin: 12px 0 24px; }
+.hero-card {
+  width: fit-content;
+  max-width: 100%;
+  margin: 12px auto 24px;
+}
 .hero-image {
-  width: 100%;
-  object-fit: cover;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 68svh;
+  margin: 0 auto;
   background: var(--paper-deep);
 }
-.hero-image--portrait { aspect-ratio: 3 / 4; }
-.hero-image--square { aspect-ratio: 1 / 1; }
-.hero-image--landscape { aspect-ratio: 4 / 3; }
+/* Real photos keep their native aspect ratio. Shape classes are retained only
+   for backwards-compatible content data; they no longer crop images. */
+.hero-image--portrait,
+.hero-image--square,
+.hero-image--landscape {
+  aspect-ratio: auto;
+}
 .photo-caption {
   display: flex;
   justify-content: space-between;
@@ -357,17 +369,23 @@ img { display: block; width: 100%; }
 }
 
 .quiz-photo {
-  width: 100%;
-  object-fit: cover;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 62svh;
+  margin: 0 auto 20px;
   border-radius: 22px;
-  margin-bottom: 20px;
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   background: var(--paper-deep);
 }
-.quiz-photo--portrait { aspect-ratio: 3 / 4; }
-.quiz-photo--square { aspect-ratio: 1 / 1; }
-.quiz-photo--landscape { aspect-ratio: 4 / 3; }
+/* Never crop real photos. The browser scales the entire image proportionally. */
+.quiz-photo--portrait,
+.quiz-photo--square,
+.quiz-photo--landscape {
+  aspect-ratio: auto;
+}
 .reveal {
   margin-top: 16px;
   padding: 18px;
@@ -536,4 +554,37 @@ img { display: block; width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.001ms !important; transition-duration:.001ms !important; }
+}
+
+/* Photo fallback: deliberately CSS-only so old SVG placeholders can never reappear. */
+.photo-placeholder {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.55), transparent 34%),
+    linear-gradient(145deg, #d9c9bb, #bfa997);
+  border: 1px solid rgba(80,55,45,.13);
+  overflow: hidden;
+}
+
+/* Missing-photo placeholders still need a deliberate frame; real photos do not. */
+.quiz-photo.photo-placeholder {
+  width: min(100%, 390px);
+  aspect-ratio: 3 / 4;
+  max-height: none;
+}
+.hero-image.photo-placeholder {
+  width: min(100%, 390px);
+  aspect-ratio: 3 / 4;
+  max-height: none;
+}
+.photo-placeholder span {
+  max-width: 14rem;
+  padding: 24px;
+  text-align: center;
+  color: rgba(68,48,41,.72);
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.15;
 }
