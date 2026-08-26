@@ -38,7 +38,14 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function nextStage() { setStage(stage + 1); }
+  function transitionOut(callback, delay = 190) {
+    const current = app.querySelector('.stage');
+    if (!current) { callback(); return; }
+    current.classList.add('stage--exit');
+    window.setTimeout(callback, delay);
+  }
+
+  function nextStage() { transitionOut(() => setStage(stage + 1)); }
 
   function showToast(message) {
     toast.textContent = message;
@@ -92,7 +99,10 @@
     app.querySelectorAll('.answer-btn').forEach(btn => btn.addEventListener('click', () => {
       screeningAnswers[screeningIndex] = Number(btn.dataset.index);
       btn.classList.add('selected');
-      setTimeout(() => { screeningIndex += 1; renderScreening(); }, 170);
+      window.setTimeout(() => transitionOut(() => {
+        screeningIndex += 1;
+        renderScreening();
+      }, 150), 160);
     }));
   }
 
@@ -155,8 +165,11 @@
         </div>
         <button class="primary-btn" id="cardNext" style="margin-top:14px">${index === cards.length - 1 ? 'Continue' : 'Next'}</button>`;
       document.getElementById('cardNext').addEventListener('click', () => {
-        if (kind === 'quiz') quizIndex += 1; else scenarioIndex += 1;
-        renderInteractiveCards(section, kind);
+        transitionOut(() => {
+          if (kind === 'quiz') quizIndex += 1; else scenarioIndex += 1;
+          renderInteractiveCards(section, kind);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
       });
       setTimeout(() => document.getElementById('revealSlot').scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 60);
     }));
@@ -211,12 +224,15 @@
       <div class="spacer-16"></div>
       <p class="eyebrow">Analyst coverage</p>
       <h3 class="section-title">${esc(d.testimonialsTitle)}</h3>
-      <div class="testimonial-stack">${d.testimonials.map(t=>`
-        <article class="testimonial">
+      <div class="testimonial-stack">${d.testimonials.map(t=>{
+        const sentiment = /SELL|UNDERPERFORM|AVOID/i.test(t.rating) ? 'negative' : 'positive';
+        return `
+        <article class="testimonial testimonial--${sentiment}">
           <span class="rating">${esc(t.rating)}</span>
           <blockquote>“${esc(t.quote)}”</blockquote>
           <footer><strong>— ${esc(t.author)}</strong>${t.note ? `<span>${esc(t.note)}</span>` : ''}</footer>
-        </article>`).join('')}</div>
+        </article>`;
+      }).join('')}</div>
       <button class="primary-btn" id="positionNext" style="margin-top:22px">Review long-term outlook</button>
     `, true);
     document.getElementById('positionNext').addEventListener('click', nextStage);
